@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0000ff;
+  --color-primary-dark: #0000cc;
+  --color-accent: #f27949;
+  --color-accent-dark: #e06838;
+  --color-dark: #0a0a1a;
+  --color-dark-light: #141428;
+  --color-light: #f8f9fa;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold text-white rounded-lg transition-all duration-300 cursor-pointer;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 255, 0.4);
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold text-white rounded-lg transition-all duration-300 cursor-pointer;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+    box-shadow: 0 4px 15px rgba(242, 121, 73, 0.3);
+  }
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(242, 121, 73, 0.4);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg border-2 transition-all duration-300 cursor-pointer;
+    border-color: white;
+    color: white;
+  }
+  .btn-outline:hover {
+    background: white;
+    color: var(--color-dark);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    @apply rounded-2xl;
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    @apply rounded-2xl shadow-xl;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-accent), #ff9a76);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, var(--color-primary), #4d4dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .hover-lift {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Reveal animation classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+}

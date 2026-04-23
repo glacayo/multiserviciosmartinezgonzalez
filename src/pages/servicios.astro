@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import es from '../i18n/es';
+
+const t = es;
+
+const services = [
+  {
+    ...t.services.items.airport,
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=900&q=80',
+    features: ['Recojo en puerta', 'Vuelos monitoreados', 'Sin esperas', 'Equipaje incluido'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>`,
+  },
+  {
+    ...t.services.items.hotels,
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80',
+    features: ['Puerta a puerta', 'Conexión directa', 'Servicio VIP', 'Disponible 24/7'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+  },
+  {
+    ...t.services.items.tours,
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80',
+    features: ['Guías certificados', 'Rutas exclusivas', 'Grupos pequeños', 'Paradas fotográficas'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    ...t.services.items.nicaraguaHonduras,
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=80',
+    features: ['Trámite migratorio', 'Documentación asistida', 'Ruta directa', 'Seguro incluido'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>`,
+  },
+  {
+    ...t.services.items.nicaraguaElSalvador,
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&q=80',
+    features: ['Cruce fronterizo', 'Asistencia total', 'Climatizado', 'Paradas opcionales'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>`,
+  },
+  {
+    ...t.services.items.corporate,
+    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=900&q=80',
+    features: ['Contratos flexibles', 'Facturación empresarial', 'Flota dedicada', 'Reportes mensuales'],
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+  },
+];
+---
+
+<Layout title="Servicios" description="Descubre todos nuestros servicios de transporte: traslados aeropuerto, tours nacionales, traslados internacionales y más." lang="es">
+  <!-- Page Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1920&q=80"
+        alt="Aeropuerto"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,10,26,0.9) 0%, rgba(0,0,255,0.5) 100%);"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      <div class="reveal max-w-2xl">
+        <span class="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6" style="background: rgba(242,121,73,0.15); color: #f27949; border: 1px solid rgba(242,121,73,0.3);">
+          Soluciones Integrales
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6" style="font-family: 'Playfair Display', serif;">
+          {t.services.sectionTitle}
+        </h1>
+        <p class="text-white/70 text-xl">{t.services.sectionSubtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Detail -->
+  {services.map((service, i) => (
+    <section class={`section-padding ${i % 2 === 0 ? '' : ''}`} style={`background: ${i % 2 === 0 ? '#ffffff' : '#f8f9fa'};`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <!-- Image -->
+          <div class={`${i % 2 === 0 ? 'reveal-left' : 'reveal-right lg:order-2'}`}>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <img
+                src={service.image}
+                alt={service.title}
+                class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(0,0,255,0.2), transparent);"></div>
+              <!-- Number badge -->
+              <div class="absolute top-6 left-6 w-14 h-14 rounded-xl flex items-center justify-center text-white font-extrabold text-xl" style="background: linear-gradient(135deg, #f27949, #e06838);">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class={`${i % 2 === 0 ? 'reveal-right' : 'reveal-left lg:order-1'}`}>
+            <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white" style="background: linear-gradient(135deg, #0000ff, #4d4dff);">
+              <Fragment set:html={service.icon} />
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" style="font-family: 'Playfair Display', serif; color: #0a0a1a;">
+              {service.title}
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">
+              {service.description}
+            </p>
+            <!-- Features -->
+            <div class="grid grid-cols-2 gap-3 mb-8">
+              {service.features.map((feat) => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 shrink-0" style="color: #f27949;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span class="text-gray-700 font-medium text-sm">{feat}</span>
+                </div>
+              ))}
+            </div>
+            <a href="/contacto" class="btn-accent">
+              Solicitar Este Servicio
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTA lang="es" />
+</Layout>

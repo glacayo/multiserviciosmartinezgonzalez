@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import es from '../i18n/es';
+
+const t = es;
+
+const vehicles = [
+  {
+    brand: 'Hyundai',
+    model: 'Grand i10',
+    type: 'Sedán',
+    year: '2026',
+    color: 'Gris',
+    image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=900&q=80',
+    passengers: 4,
+    features: [t.fleet.features.ac, t.fleet.features.luggage, t.fleet.features.wifi],
+    description: 'El Hyundai Grand i10 2026 combina eficiencia, comodidad y estilo moderno. Perfecto para traslados urbanos y viajes cortos con su diseño compacto pero espacioso interior.',
+  },
+  {
+    brand: 'Hyundai',
+    model: 'Avante',
+    type: 'Sedán',
+    year: '2015',
+    color: 'Blanco',
+    image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=900&q=80',
+    passengers: 4,
+    features: [t.fleet.features.ac, t.fleet.features.luggage, t.fleet.features.leather],
+    description: 'El Hyundai Avante es sinónimo de elegancia y confiabilidad. Con su amplio interior y asientos de cuero, ofrece una experiencia de viaje premium para cada pasajero.',
+  },
+  {
+    brand: 'Kia',
+    model: 'Rio',
+    type: 'Sedán',
+    year: '2017',
+    color: 'Rojo',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900&q=80',
+    passengers: 4,
+    features: [t.fleet.features.ac, t.fleet.features.luggage, t.fleet.features.wifi],
+    description: 'El Kia Rio 2017 destaca por su diseño deportivo y su eficiencia de combustible. Ideal para tours y traslados interciudad con estilo y rendimiento.',
+  },
+];
+---
+
+<Layout title="Flota Vehicular" description="Conoce nuestra flota de vehículos modernos y cómodos. Sedanes Hyundai y Kia equipados para cada tipo de viaje." lang="es">
+  <!-- Page Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920&q=80"
+        alt="Flota de vehículos"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,10,26,0.9) 0%, rgba(0,0,255,0.5) 100%);"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      <div class="reveal max-w-2xl">
+        <span class="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6" style="background: rgba(242,121,73,0.15); color: #f27949; border: 1px solid rgba(242,121,73,0.3);">
+          Vehículos Premium
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6" style="font-family: 'Playfair Display', serif;">
+          {t.fleet.sectionTitle}
+        </h1>
+        <p class="text-white/70 text-xl">{t.fleet.sectionSubtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehicles Detail -->
+  {vehicles.map((vehicle, i) => (
+    <section class="section-padding" style={`background: ${i % 2 === 0 ? '#ffffff' : '#f8f9fa'};`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
+          <!-- Image -->
+          <div class={`${i % 2 === 0 ? 'reveal-left' : 'reveal-right lg:order-2'}`}>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <img
+                src={vehicle.image}
+                alt={`${vehicle.brand} ${vehicle.model}`}
+                class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <!-- Year badge -->
+              <div class="absolute top-6 left-6 px-4 py-2 rounded-lg text-white font-bold" style="background: linear-gradient(135deg, #0000ff, #4d4dff);">
+                {vehicle.year}
+              </div>
+              <!-- Color indicator -->
+              <div class="absolute top-6 right-6 flex items-center gap-2 px-3 py-2 rounded-lg" style="background: rgba(0,0,0,0.5);">
+                <span class="w-4 h-4 rounded-full border-2 border-white" style={`background: ${vehicle.color === 'Gris' ? '#9ca3af' : vehicle.color === 'Blanco' ? '#ffffff' : '#ef4444'};`}></span>
+                <span class="text-white text-sm font-medium">{vehicle.color}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class={`${i % 2 === 0 ? 'reveal-right' : 'reveal-left lg:order-1'}`}>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold mb-4" style="background: rgba(0,0,255,0.1); color: #0000ff;">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              {vehicle.type}
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-2" style="font-family: 'Playfair Display', serif; color: #0a0a1a;">
+              {vehicle.brand}
+            </h2>
+            <p class="text-2xl font-bold mb-4" style="color: #f27949;">{vehicle.model}</p>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">
+              {vehicle.description}
+            </p>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-8">
+              <div class="p-4 rounded-xl text-center" style="background: rgba(0,0,255,0.05);">
+                <svg class="w-6 h-6 mx-auto mb-2" style="color: #0000ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <div class="font-bold text-lg" style="color: #0a0a1a;">{vehicle.passengers}</div>
+                <div class="text-gray-500 text-xs">{t.fleet.passengers}</div>
+              </div>
+              <div class="p-4 rounded-xl text-center" style="background: rgba(0,0,255,0.05);">
+                <svg class="w-6 h-6 mx-auto mb-2" style="color: #0000ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <div class="font-bold text-lg" style="color: #0a0a1a;">{vehicle.year}</div>
+                <div class="text-gray-500 text-xs">Modelo</div>
+              </div>
+              <div class="p-4 rounded-xl text-center" style="background: rgba(0,0,255,0.05);">
+                <svg class="w-6 h-6 mx-auto mb-2" style="color: #0000ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div class="font-bold text-lg" style="color: #0a0a1a;">{vehicle.type}</div>
+                <div class="text-gray-500 text-xs">Categoría</div>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              {vehicle.features.map((feat) => (
+                <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(242,121,73,0.1); color: #f27949;">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+            <a href="/contacto" class="btn-accent">
+              Reservar Este Vehículo
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTA lang="es" />
+</Layout>

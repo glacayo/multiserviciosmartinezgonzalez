@@ -1,0 +1,33 @@
+---
+import es from '../i18n/es';
+import en from '../i18n/en';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = lang === 'en' ? en : es;
+
+const stats = [
+  { value: 6, suffix: '+', label: t.stats.years, icon: 'calendar' },
+  { value: 24, suffix: '/7', label: t.stats.availability, icon: 'clock' },
+  { value: 3, suffix: '', label: t.stats.countries, icon: 'globe' },
+  { value: 1000, suffix: '+', label: t.stats.transfers, icon: 'check' },
+];
+---
+
+<section class="relative py-0 -mt-1" style="background: #0a0a1a;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal-scale grid grid-cols-2 lg:grid-cols-4 -mt-16 relative z-20 overflow-hidden" style="background: linear-gradient(135deg, #0a0a1a, #141428); border-radius: 1.5rem;">
+      {stats.map((stat, i) => (
+        <div class={`p-8 lg:p-10 text-center ${i < stats.length - 1 ? 'border-b lg:border-b-0 lg:border-r' : ''}`} style="border-color: rgba(255,255,255,0.08);">
+          <div class="counter text-4xl lg:text-5xl font-extrabold text-white mb-2" data-target={stat.value.toString()} data-suffix={stat.suffix}>
+            0{stat.suffix}
+          </div>
+          <div class="text-white/60 text-sm font-medium uppercase tracking-wider">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

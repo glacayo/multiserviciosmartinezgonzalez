@@ -1,0 +1,150 @@
+---
+import es from '../i18n/es';
+import en from '../i18n/en';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = lang === 'en' ? en : es;
+const isEn = lang === 'en';
+
+const quickLinks = [
+  { href: isEn ? '/en/' : '/', label: t.nav.home },
+  { href: isEn ? '/en/about' : '/nosotros', label: t.nav.about },
+  { href: isEn ? '/en/services' : '/servicios', label: t.nav.services },
+  { href: isEn ? '/en/fleet' : '/flota', label: t.nav.fleet },
+  { href: isEn ? '/en/contact' : '/contacto', label: t.nav.contact },
+];
+
+const serviceLinks = [
+  { label: t.services.items.airport.title },
+  { label: t.services.items.hotels.title },
+  { label: t.services.items.tours.title },
+  { label: t.services.items.nicaraguaHonduras.title },
+  { label: t.services.items.nicaraguaElSalvador.title },
+  { label: t.services.items.corporate.title },
+];
+---
+
+<footer class="relative overflow-hidden" style="background: #0a0a1a;">
+  <!-- Decorative top border -->
+  <div class="h-1 w-full" style="background: linear-gradient(90deg, #0000ff, #f27949, #0000ff);"></div>
+
+  <!-- Background decoration -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl" style="background: #0000ff;"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl" style="background: #f27949;"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Column 1: About -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #0000ff, #4d4dff);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-extrabold text-white block" style="font-family: 'Playfair Display', serif;">Multiservicios</span>
+            <span class="text-sm font-medium" style="color: #f27949;">Martínez González</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed mb-6">
+          {t.footer.description}
+        </p>
+        <!-- Social Icons -->
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 hover:bg-white/10">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 hover:bg-white/10">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 hover:bg-white/10">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h3 class="font-bold text-white text-lg mb-6">{t.footer.quickLinks}</h3>
+        <ul class="space-y-3">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/60 hover:text-white text-sm transition-colors duration-300 flex items-center gap-2 group">
+                <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" style="color: #f27949;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/>
+                </svg>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Services -->
+      <div>
+        <h3 class="font-bold text-white text-lg mb-6">{t.footer.servicesTitle}</h3>
+        <ul class="space-y-3">
+          {serviceLinks.map((link) => (
+            <li>
+              <span class="text-white/60 text-sm flex items-center gap-2">
+                <svg class="w-3 h-3" style="color: #f27949;" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+                {link.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div>
+        <h3 class="font-bold text-white text-lg mb-6">{t.footer.contactTitle}</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(242,121,73,0.15);">
+              <svg class="w-4 h-4" style="color: #f27949;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <p class="text-white/60 text-sm">Carretera nueva león km10 1/2<br/>Residencial San Miguel</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(242,121,73,0.15);">
+              <svg class="w-4 h-4" style="color: #f27949;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <p class="text-white/60 text-sm">24/7 - {t.contactPage.scheduleText}</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(242,121,73,0.15);">
+              <svg class="w-4 h-4" style="color: #f27949;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <p class="text-white/60 text-sm">info@multiserviciosmg.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/40 text-sm">
+        &copy; {new Date().getFullYear()} Multiservicios Martínez González. {t.footer.rights}
+      </p>
+      <p class="text-white/30 text-xs">
+        {isEn ? 'Developed by' : 'Desarrollado por'} <a href="https://glacayo.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white/60 transition-colors duration-300 underline">Glacayo</a>
+      </p>
+    </div>
+  </div>
+</footer>
